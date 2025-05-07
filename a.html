@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo Relacional</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .table-container {
+            overflow-x: auto; /* Enable horizontal scrolling for small screens */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        caption {
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .primary-key {
+            font-weight: bold;
+        }
+        .foreign-key {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1 >Practica #2 </h1 >
+
+        FUNDAMENTOS DE PROGRAMABILIDAD EN SGBD INF 440
+
+    <h1 >respuesta de pregunta #1 </h1 >
+    <h3>transformando a Modelo Relacional</h3>
+    <p>de: victor david Camargo Loayza</p>
+
+    <div class="table-container">
+        <table>
+            <caption>Árbitro</caption>
+            <thead>
+                <tr>
+                    <th>PK</th>
+                    <th>Atributo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="primary-key"></td>
+                    <td>Pasaporte</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Nombre</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>A_Paterno</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>A_Materno</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>F_Nacimiento</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>AñoInicioActividad</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Nacionalidad</td>
+                </tr>
+                <tr>
+                    <td class="foreign-key">FK</td>
+                    <td>ReemplazadoPor <i>(FK a Árbitro.Pasaporte)</i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <caption>Partido</caption>
+            <thead>
+                <tr>
+                    <th>PK</th>
+                    <th>Atributo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="primary-key"></td>
+                    <td>ID_Partido</td>
+                </tr>
+                <tr>
+                    <td class="foreign-key">FK</td>
+                    <td>Arbitro_Pasaporte <i>(FK a Árbitro.Pasaporte)</i></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Instancia</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Duracion</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Fecha</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Hora</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Dia</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <caption>Estadio</caption>
+            <thead>
+                <tr>
+                    <th>PK</th>
+                    <th>Atributo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="primary-key"></td>
+                    <td>Nombre</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Ciudad</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>CapacidadMaxima</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <caption>Hincha</caption>
+            <thead>
+                <tr>
+                    <th>PK</th>
+                    <th>Atributo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="primary-key"></td>
+                    <td>NroTiket</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Ubicacion</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Zona</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>LugarAsiento</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Vestimenta</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <caption>Equipo</caption>
+            <thead>
+                <tr>
+                    <th>PK</th>
+                    <th>Atributo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="primary-key"></td>
+                    <td>NombreSeleccion</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>NombreDT</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>LugarEntrenamiento</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <caption>Jugador</caption>
+            <thead>
+                <tr>
+                    <th>PK</th>
+                    <th>Atributo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="primary-key"></td>
+                    <td>NroCamiseta</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Nombre</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>A_Paterno</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>A_Materno</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Posicion</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Apodo</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <caption>PartidoEquipo (Tabla de Unión para la relación M:N entre Partido y Equipo)</caption>
+            <thead>
+                <tr>
+                    <th>FK</th>
+                    <th>Atributo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="foreign-key">FK</td>
+                    <td>Partido_ID <i>(FK a Partido.ID_Partido)</i></td>
+                </tr>
+                <tr>
+                    <td class="foreign-key">FK</td>
+                    <td>Equipo_NombreSeleccion <i>(FK a Equipo.NombreSeleccion)</i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <caption>Ocurre (Tabla de Unión para la relación M:N entre Partido y Estadio)</caption>
+            <thead>
+                <tr>
+                    <th>FK</th>
+                    <th>Atributo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="foreign-key">FK</td>
+                    <td>Partido_ID <i>(FK a Partido.ID_Partido)</i></td>
+                </tr>
+                <tr>
+                    <td class="foreign-key">FK</td>
+                    <td>Estadio_Nombre <i>(FK a Estadio.Nombre)</i></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>CapacidadHabilitada</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>CantidadPolicia</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <caption>EstadioHincha (Tabla de Unión para la relación M:N entre Estadio e Hincha)</caption>
+            <thead>
+                <tr>
+                    <th>FK</th>
+                    <th>Atributo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="foreign-key">FK</td>
+                    <td>Estadio_Nombre <i>(FK a Estadio.Nombre)</i></td>
+                </tr>
+                <tr>
+                    <td class="foreign-key">FK</td>
+                    <td>Hincha_NroTiket <i>(FK a Hincha.NroTiket)</i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <caption>EquipoJugador (Tabla de Unión para la relación M:N entre Equipo y Jugador)</caption>
+            <thead>
+                <tr>
+                    <th>FK</th>
+                    <th>Atributo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="foreign-key">FK</td>
+                    <td>Equipo_NombreSeleccion <i>(FK a Equipo.NombreSeleccion)</i></td>
+                </tr>
+                <tr>
+                    <td class="foreign-key">FK</td>
+                    <td>Jugador_NroCamiseta <i>(FK a Jugador.NroCamiseta)</i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
