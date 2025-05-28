@@ -1,0 +1,1 @@
+    insert into estudiantes values ('marco'),('pablutus');

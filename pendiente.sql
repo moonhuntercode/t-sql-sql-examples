@@ -1,0 +1,34 @@
+
+-- WITH EmpleadosConCategoria AS (
+--     SELECT
+--         P.BusinessEntityID, -- ID del empleado
+--         DATEDIFF(YEAR, P.BirthDate, '2025-12-31') AS Edad, -- 🎂 Edad calculada
+--         CASE
+--             WHEN DATEDIFF(YEAR, P.BirthDate, '2025-12-31') BETWEEN 25 AND 40 THEN 'Junior' -- 👶 Junior
+--             WHEN DATEDIFF(YEAR, P.BirthDate, '2025-12-31') BETWEEN 41 AND 55 THEN 'Senior' -- 🧑‍🦳 Senior
+--             WHEN DATEDIFF(YEAR, P.BirthDate, '2025-12-31') BETWEEN 56 AND 75 THEN 'Mérito' -- 👑 Mérito
+--             ELSE 'Otra Categoría' -- ❓ Para edades fuera de los rangos definidos
+--         END AS Categoria -- 🏷️ La categoría del empleado
+--     FROM
+--         Person.Person P, -- Alias 'P'
+--         HumanResources.Employee E -- Alias 'E'
+--     WHERE
+--         P.BusinessEntityID = E.BusinessEntityID -- 🤝 Condición de unión
+--         AND P.BirthDate IS NOT NULL -- 📅 Aseguramos que tengan fecha de nacimiento
+--         AND DATEDIFF(YEAR, P.BirthDate, '2025-12-31') BETWEEN 25 AND 75 -- 🎯 Filtramos por edades dentro de los rangos de interés
+-- )
+-- SELECT
+--     Categoria, -- 🏷️ La categoría
+--     COUNT(BusinessEntityID) AS Cantidad -- 📊 Cantidad de empleados en esa categoría
+-- FROM
+--     EmpleadosConCategoria -- Usamos la CTE como si fuera una tabla
+-- GROUP BY
+--     Categoria -- 🔢 Agrupamos directamente por la columna 'Categoria' ya calculada
+-- ORDER BY
+--     -- Ordenamos las categorías para que aparezcan en el orden lógico: Junior, Senior, Mérito
+--     CASE
+--         WHEN Categoria = 'Junior' THEN 1
+--         WHEN Categoria = 'Senior' THEN 2
+--         WHEN Categoria = 'Mérito' THEN 3
+--         ELSE 4
+--     END;
